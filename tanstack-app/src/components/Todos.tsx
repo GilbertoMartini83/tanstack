@@ -27,7 +27,7 @@ const Todos = () => {
       <br/>
       <input placeholder="Description" {...register("description")} />
       <br/>
-      <input type="submit" value="Please Click Here"/>
+      <input type="submit" value={createTodoMutation.isPending ? 'Creating new, please Wait': 'Submit'} disabled={createTodoMutation.isPending}/>
     </form>
 
         <ul>
