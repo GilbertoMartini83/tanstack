@@ -28,4 +28,12 @@ const createTodo = async (newTodo: Todo) => {
    return (await axiosInstance.post<Todo>('todos', newTodo));
 };
 
-export { getTodo, getTodosIds , createTodo };
+const updateTodo = async (updatedTodo: Todo) => {
+    return (await axiosInstance.put<Todo>(`todos/${updatedTodo.id}`, updatedTodo));
+}
+
+const deleteTodo = async( id: number) => {
+    return (await axiosInstance.delete<Todo>(`todos/${id}`));
+}
+
+export { getTodo, getTodosIds , createTodo , updateTodo, deleteTodo};
