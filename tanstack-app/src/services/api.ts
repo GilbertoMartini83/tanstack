@@ -1,5 +1,6 @@
 import axios from "axios";
 import type Todo from "../types/todo";
+import type Project from "../types/project";
 
 // the json‑server in `project/server.js` is plain HTTP, not HTTPS.
 // using `https://` results in a connection refusal and Axios throws
@@ -36,4 +37,8 @@ const deleteTodo = async( id: number) => {
     return (await axiosInstance.delete<Todo>(`todos/${id}`));
 }
 
-export { getTodo, getTodosIds , createTodo , updateTodo, deleteTodo};
+const getProjects = async (page:  number = 1)  => {
+    return (await axiosInstance.get<Project[]>(`projects?_page=${page}&_limit=3`)).data;
+}
+
+export { getTodo, getTodosIds , createTodo , updateTodo, deleteTodo, getProjects};

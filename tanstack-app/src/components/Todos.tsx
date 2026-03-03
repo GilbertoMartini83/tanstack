@@ -25,9 +25,10 @@ const Todos = () => {
     }  
   }
 
-  const handleDeleteTodoClick : SubmitHandler<any> = (id) => {
+  const handleDeleteTodoClick : SubmitHandler<any> = async (id) => {
     if( id > 0 ){
-      deleteTodoMutation.mutate(id);
+      await deleteTodoMutation.mutateAsync(id);
+      console.log("success");
     }
     
   }
